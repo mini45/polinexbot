@@ -11,8 +11,33 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+//Route::get('/', function () {
+//    return view('home');
+//});
 
 
+
+
+
+Route::group(['middleware' => 'guest'],
+    function () {
+        Route::any('/', 'HomeController@index')->name('home');
+    });
+
+
+Auth::routes();
+Route::group(['middleware' => 'auth'],
+    function () {
+        Route::get('/', 'HomeController@index')->name('home');
+    });
+
+//Route::middleware(['guest', 'second'])->group(function () {
+//    Route::get('/', function () {
+//        // Uses first & second Middleware
+//    });
+//
+//    Route::get('user/profile', function () {
+//        // Uses first & second Middleware
+//    });
+//});
+//Route::get('/home', 'HomeController@index')->name('home');
