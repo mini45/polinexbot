@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+
+use App\Http\Library\PolinexApiWrapper;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+//        PoloniexApiWrapper::
+
+        $api = new PolinexApiWrapper();
+//        $xyz = $api->get_volume();
+//        $y = $api->get_my_trade_history('BTC_ETH');
+//        $y = $api->get_my_trade_history('ETH_BTC');
+
+
         return view('home');
     }
 }
